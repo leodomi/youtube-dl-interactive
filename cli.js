@@ -74,7 +74,7 @@ async function run(url, isDemo) {
 
 	const {formats} = info
 	const {formatString, hasVideo, hasAudio} = await menu.formatMenu(formats)
-	let options = ` -f '${formatString}' -o '%(title)s.%(ext)s' `
+	let options = ` -f '${formatString}' -o '%(title)s.%(ext)s' --all-subs --embed-subs`
 
 	if (!hasVideo && hasAudio) {
 		options += ' --extract-audio '

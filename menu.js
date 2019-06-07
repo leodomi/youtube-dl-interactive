@@ -59,21 +59,10 @@ async function selectPresetOrResolution(formats) {
 			pageSize: 10,
 			choices: [
 				{
-					name: 'best video + best audio',
+					name: 'Video',
 					value: {finalFormatId: 'bestvideo+bestaudio/best'}
 				},
-				{
-					name: 'worst video + worst audio',
-					value: {finalFormatId: 'worstvideo+worstaudio/worst'}
-				},
-				{
-					name: '<480p mp4',
-					value: {
-						finalFormatId:
-							'bestvideo[height<=480][ext=mp4]+bestaudio[ext=m4a]/best[height<=480][ext=mp4]'
-					}
-				},
-				{name: 'audio only', value: {}},
+				{name: 'Audio', value: {}},
 				new inquirer.Separator('--- specify resolution: ---'),
 				...getResolutions(formats).map(resolution => ({
 					name: resolution + 'p',
@@ -115,7 +104,6 @@ async function selectAudio(formats, selectedVideoFormat) {
 	}
 
 	choices.push({name: 'best audio', value: 'bestaudio'})
-	choices.push({name: 'worst audio', value: 'worstaudio'})
 	choices.push(new inquirer.Separator('--- specify: ---'))
 	choices.push(
 		...getAudioFormats(formats).map(f => ({
